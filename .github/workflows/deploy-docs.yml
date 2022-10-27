@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy Storybook
         with:
-          cmd: deploy-storybook
+          cmd: deploy-storybook --ci --existing-output-dir=storybook-static --remote=https://github.com/PHRaulino/ignitelab-ds.git
         uses: borales/actions-yarn@v3.0.0
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
