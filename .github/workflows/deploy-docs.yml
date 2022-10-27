@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         with:
-          cmd: install --frozen-lockfile
+          cmd: install --frozen-lockfile --legacy-peer-deps
         uses: borales/actions-yarn@v3.0.0
 
       - name: Build Storybook
