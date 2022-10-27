@@ -19,20 +19,12 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        with:
-          cmd: install --frozen-lockfile --legacy-peer-deps
-        uses: borales/actions-yarn@v3.0.0
+        run: npm ci --legacy-peer-deps
 
       - name: Build Storybook
-        with:
-          cmd: build-storybook
-        uses: borales/actions-yarn@v3.0.0
-        env:
-          NODE_OPTIONS: --openssl-legacy-provider
+        run: npm run build-storybook
 
       - name: Deploy Storybook
-        with:
-          cmd: deploy-storybook --ci --existing-output-dir=storybook-static --source-branch=main --remote=upstream
-        uses: borales/actions-yarn@v3.0.0
+        run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
