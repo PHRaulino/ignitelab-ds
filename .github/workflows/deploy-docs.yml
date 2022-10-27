@@ -27,6 +27,8 @@ jobs:
         with:
           cmd: build-storybook
         uses: borales/actions-yarn@v3.0.0
+        env:
+          NODE_OPTIONS: s--openssl-legacy-provider
 
       - name: Deploy Storybook
         with:
