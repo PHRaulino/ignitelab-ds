@@ -18,13 +18,19 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install dependencies
-        run: npm ci
+        with:
+            cmd: install
+        - name: Install dependencies
+          uses: borales/actions-yarn@v3.0.0
 
-      - name: Build Storybook
-        run: npm run build-storybook
+        with:
+            cmd: build-storybook
+        - name: Build Storybook
+          uses: borales/actions-yarn@v3.0.0
 
-      - name: Deploy Storybook
-        run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
-        env:
+        with:
+            cmd: deploy-storybook -- --ci --existing-output-dir=storybook-static
+        - name: Build Storybook
+          uses: borales/actions-yarn@v3.0.0
+          env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
