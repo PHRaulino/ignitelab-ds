@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  NODE_OPTIONS: --openssl-legacy-provider
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -27,8 +30,6 @@ jobs:
         with:
           cmd: build-storybook
         uses: borales/actions-yarn@v3.0.0
-        env:
-          NODE_OPTIONS: s--openssl-legacy-provider
 
       - name: Deploy Storybook
         with:
