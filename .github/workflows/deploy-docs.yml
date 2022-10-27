@@ -33,7 +33,6 @@ jobs:
       - name: Deploy Storybook
         with:
           cmd: deploy-storybook
-          repository: PHRaulino/ignitelab-ds
         uses: borales/actions-yarn@v3.0.0
         env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
