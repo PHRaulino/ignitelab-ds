@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         with:
-          cmd: install
+          cmd: install --frozen-lockfile
         uses: borales/actions-yarn@v3.0.0
 
       - name: Build Storybook
