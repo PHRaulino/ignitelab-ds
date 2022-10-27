@@ -15,19 +15,24 @@ jobs:
 
       - uses: borales/actions-yarn@v3.0.0
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-            cmd: install
-        - name: Install dependencies
-          uses: borales/actions-yarn@v3.0.0
+          node-version: 16
 
+      - name: Install dependencies
         with:
-            cmd: build-storybook
-        - name: Build Storybook
-          uses: borales/actions-yarn@v3.0.0
+          cmd: install
+        uses: borales/actions-yarn@v3.0.0
 
+      - name: Build Storybook
         with:
-            cmd: deploy-storybook -- --ci --existing-output-dir=storybook-static
-        - name: Build Storybook
-          uses: borales/actions-yarn@v3.0.0
-          env:
+          cmd: build-storybook
+        uses: borales/actions-yarn@v3.0.0
+
+      - name: Deploy Storybook
+        with:
+          cmd: deploy-storybook -- --ci --existing-output-dir=storybook-static
+        uses: borales/actions-yarn@v3.0.0
+        env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
