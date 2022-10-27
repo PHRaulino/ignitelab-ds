@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy Storybook
         with:
-          cmd: deploy-storybook --ci --existing-output-dir=storybook-static --source-branch=main
+          cmd: deploy-storybook --ci --existing-output-dir=storybook-static --source-branch=main --remote=upstream
         uses: borales/actions-yarn@v3.0.0
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
